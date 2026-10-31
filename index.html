@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nexus AI</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://js.puter.com/v2/"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+<body>
+  <!-- LOGIN GATE -->
+  <div id="auth" class="auth">
+    <div class="auth-card">
+      <div class="logo-orb"></div>
+      <h1 class="neon-text">NEXUS</h1>
+      <p>Your free AI for coding, studying and reliable answers.</p>
+      <button id="loginBtn" class="btn-neon">Sign in / Create account</button>
+      <small>Secure login is handled by Puter. New here? The same button creates your free account.</small>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div id="app" class="app hidden">
+    <aside id="sidebar" class="sidebar">
+      <div class="brand"><span class="logo-orb sm"></span><span class="neon-text">NEXUS</span></div>
+      <button id="newChat" class="btn-neon full">+ New chat</button>
+      <div id="chatList" class="chat-list"></div>
+      <div class="user-box">
+        <div id="userName" class="user-name">User</div>
+        <button id="logoutBtn" class="btn-ghost">Log out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button id="menuBtn" class="btn-ghost menu">☰</button>
+        <select id="mode">
+          <option value="chat">Chat &amp; Code</option>
+          <option value="study">Study Helper</option>
+        </select>
+        <select id="web" title="Web search">
+          <option value="auto">🌐 Web: Auto</option>
+          <option value="on">🌐 Web: Always</option>
+          <option value="off">🌐 Web: Off</option>
+        </select>
+        <select id="model">
+          <option value="gpt-4o-mini">GPT-4o mini (fast)</option>
+          <option value="gpt-4o">GPT-4o (smart)</option>
+          <option value="claude-sonnet-4">Claude Sonnet</option>
+          <option value="deepseek-chat">DeepSeek Chat</option>
+          <option value="consensus">🔬 Consensus AI (Research)</option>
+          <option value="ultimate">🧠 Ultimate (council of all models)</option>
+        </select>
+        <select id="voiceLang" title="Voice language">
+          <option value="en-US">🗣️ English</option>
+          <option value="hi-IN">🗣️ Hindi</option>
+          <option value="ne-NP">🗣️ Nepali</option>
+        </select>
+        <button id="speakBtn" class="btn-ghost toggle" title="Read answers aloud">🔊</button>
+        <button id="voiceModeBtn" class="btn-ghost toggle" title="Hands-free voice mode">🎧 Voice mode</button>
+      </header>
+
+      <div id="messages" class="messages"></div>
+
+      <div class="composer-area">
+        <div id="attachPreview" class="attach-preview hidden"></div>
+        <form id="composer" class="composer">
+          <input id="fileInput" type="file" accept="image/*" hidden />
+          <button id="attachBtn" class="icon-btn" type="button" title="Attach an image to analyze">📎</button>
+          <button id="micBtn" class="icon-btn" type="button" title="Speak your message">🎤</button>
+          <button id="imgBtn" class="icon-btn" type="button" title="Create an image (type what you want after /image)">🎨</button>
+          <textarea id="input" rows="1" placeholder="Ask Nexus anything…  (Enter to send, /image to create a picture)"></textarea>
+          <button id="sendBtn" class="btn-neon" type="submit">Send</button>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
