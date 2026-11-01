@@ -358,9 +358,13 @@ function handleCommand(text) {
 }
 
 /* ---------- AUTH ---------- */
+/* ---------- AUTH ---------- */
+
 async function init() {
     try {
-        if (puter.auth.isSignedIn()) await enterApp();
+        if (puter.auth.isSignedIn()) {
+            await enterApp();
+        }
     } catch (e) {
         console.error(e);
     }
@@ -375,8 +379,16 @@ $("loginBtn").addEventListener("click", async () => {
     }
 });
 
+$("guestBtn").addEventListener("click", () => {
+    user = null;
+    enterGuestMode();
+});
+
 $("logoutBtn").addEventListener("click", () => {
-    puter.auth.signOut();
+    if (user) {
+        puter.auth.signOut();
+    }
+
     location.reload();
 });
 
@@ -386,6 +398,16 @@ async function enterApp() {
     $("userName").textContent =
         "👤 " + user.username + (isOwnerUser() ? " ✅ Creator" : "");
 
+    showApp();
+}
+
+function enterGuestMode() {
+    user = null;
+    $("userName").textContent = "👤 Guest";
+    showApp();
+}
+
+function showApp() {
     authEl.classList.add("hidden");
     appEl.classList.remove("hidden");
 
