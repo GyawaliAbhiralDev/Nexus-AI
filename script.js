@@ -77,7 +77,7 @@ function withTimeout(promise, ms) {
 /* ---------- 🔬 CONSENSUS AI ---------- */
 
 async function searchConsensus(query) {
-    const response = await fetch("http://localhost:3000/api/consensus", {
+    const response = await fetch("https://nexus-ai-backend-c0cv.onrender.com/api/consensus", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
